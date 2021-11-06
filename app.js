@@ -44,25 +44,38 @@ app.post('/Generator_URL_Shortener', (req, res) => {
   }
 
   // 在資料庫尋找是否有一樣的網址，沒有則先新增短網址ID，並在資料庫新增資料後render result頁面，要是有則直接render result頁面
-  urlShortener.find(shortenerUrlData)
+  urlShortener.findOne(shortenerUrlData)
     .lean()
     .then(urlData => {
 
-      if (urlData.length === 0) {
+      if (urlData === null) {
         // add shortenID
         generatorUrlData(shortenerUrlData)
 
-        return urlShortener.create(shortenerUrlData)
-          .then(() => res.render('/Generator_URL_Shortener/result', { shortenerUrlData }))
+        urlShortener.create(shortenerUrlData)
           .catch(error => console.log(error))
 
       } else {
-
-        res.render('/Generator_URL_Shortener/result', { shortenerUrlData: urlData })
+        shortenerUrlData.shortenerID = urlData.shortenerID
       }
     })
+    .then(() => res.render('result', { shortenerUrlData }))
     .catch(error => console.log(error))
 
+})
+
+// 使用者使用短網址後連接的路由， 若有該短網址則連通至指定網址，若無則指向本專案首頁
+app.get('/:shortenerID', (req, res) => {
+  const shortenerID = req.params.shortenerID
+  return urlShortener.findOne({ shortenerID })
+    .lean()
+    .then(urlData => {
+      if (urlData) {
+        res.redirect(urlData.url_source)
+      } else {
+        res.redirect('/')
+      }
+    })
 })
 
 // monitor sever

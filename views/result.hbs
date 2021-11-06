@@ -1,0 +1,13 @@
+<div class="w-75 d-flex flex-column align-items-center">
+  <h1>Success! Please use this link：</h1>
+  <input id="display-url" class="border-0 bg-light w-75 form-control" type="text" name="url_source"
+    placeholder="Input URL here" aria-label="Username" aria-describedby="basic-addon1"
+    value="http://localhost:3000/{{ shortenerUrlData.shortenerID }}" disabled>
+
+  <button id="btn-copy" class="btn btn-outline-primary btn-lg mt-3"
+    data-url="http://localhost:3000/{{ shortenerUrlData.shortenerID }}" style="display: block;">Copy</button>
+
+</div>
+
+<!--copy 按鈕監聽事件 -->
+<script src="/javascripts/copy.js"></script>
