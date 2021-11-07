@@ -34,12 +34,14 @@ cd generator_url_shortener
 npm install
 ```
 
-4.使用腳本，啟動本專案伺服器
+4.在mongodb建立名為url_shortener的資料庫
+
+5.使用腳本，啟動本專案伺服器
 ```
 npm run dev
 ```
 
-5.當終端機顯示以下文件，表示伺服器已正常啟動
+6.當終端機顯示以下文件，表示伺服器已正常啟動
 ```
 Express is running on http://localhost:3000
 ```
