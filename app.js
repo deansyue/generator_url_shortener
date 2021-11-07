@@ -9,7 +9,7 @@ const routes = require('./routes/index')
 const app = express()
 
 // set port
-const PORT = 3000
+const PORT = process.env.PORT || 3000
 
 // set handlebars layout
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
