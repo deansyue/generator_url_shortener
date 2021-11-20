@@ -4,7 +4,7 @@ const express = require('express')
 const router = express.Router()
 
 const urlShortener = require('../../models/url_shortener')
-const generatorUrlData = require('../../public/javascripts/generatorUrlData')
+const generatorUrlData = require('../../utils/generatorUrlData')
 
 // router of clicked submit in index page
 router.post('/', (req, res) => {

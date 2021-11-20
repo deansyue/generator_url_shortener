@@ -4,8 +4,12 @@
     placeholder="Input URL here" aria-label="Username" aria-describedby="basic-addon1"
     value="http://localhost:3000/{{ shortenerUrlData.shortenerID }}" disabled>
 
-  <button id="btn-copy" class="btn btn-outline-primary btn-lg mt-3"
-    data-url="http://localhost:3000/{{ shortenerUrlData.shortenerID }}" style="display: block;">Copy</button>
+  <div>
+    <a href="/" class="btn btn-outline-primary btn-lg mt-3 mr-3">Back</a>
+
+    <button id="btn-copy" class="btn btn-outline-primary btn-lg mt-3"
+      data-url="http://localhost:3000/{{ shortenerUrlData.shortenerID }}">Copy</button>
+  </div>
 
 </div>
 
